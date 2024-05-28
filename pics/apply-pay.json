@@ -1,0 +1,40 @@
+{
+  "image_path": "C:/Users/Tlxna/Downloads/Untitled (1).png",
+  "annotations": [
+    {
+      "x": 396,
+      "y": 202,
+      "width": 156,
+      "height": 68,
+      "text": "Apply"
+    },
+    {
+      "x": 967,
+      "y": 200,
+      "width": 119,
+      "height": 63,
+      "text": "Pay"
+    },
+    {
+      "x": 571,
+      "y": 328,
+      "width": 126,
+      "height": 83,
+      "text": "\nPayment\npending"
+    },
+    {
+      "x": 812,
+      "y": 353,
+      "width": 86,
+      "height": 52,
+      "text": "Bill ID"
+    },
+    {
+      "x": 1199,
+      "y": 330,
+      "width": 79,
+      "height": 65,
+      "text": "\nPaid"
+    }
+  ]
+}

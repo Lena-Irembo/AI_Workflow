@@ -1,0 +1,75 @@
+{
+    "image_path": "C:/Users/Tlxna/Downloads/test_workflow.png",
+    "annotations": [
+        {
+            "x": 202,
+            "y": 83,
+            "width": 115,
+            "height": 75,
+            "text": "Apply"
+        },
+        {
+            "x": 539,
+            "y": 75,
+            "width": 74,
+            "height": 76,
+            "text": "Pay"
+        },
+        {
+            "x": 862,
+            "y": 75,
+            "width": 202,
+            "height": 59,
+            "text": "[\u2014)\nUpdate application"
+        },
+        {
+            "x": 462,
+            "y": 367,
+            "width": 221,
+            "height": 38,
+            "text": "\u2018Assign application to otfice-<\u2014"
+        },
+        {
+            "x": 1063,
+            "y": 358,
+            "width": 216,
+            "height": 36,
+            "text": ""
+        },
+        {
+            "x": 306,
+            "y": 563,
+            "width": 99,
+            "height": 57,
+            "text": "Reject"
+        },
+        {
+            "x": 533,
+            "y": 568,
+            "width": 84,
+            "height": 63,
+            "text": "Escalate"
+        },
+        {
+            "x": 749,
+            "y": 568,
+            "width": 85,
+            "height": 58,
+            "text": "RFA"
+        },
+        {
+            "x": 1305,
+            "y": 925,
+            "width": 137,
+            "height": 25,
+            "text": "Approved by OGIE-"
+        },
+        {
+            "x": 1589,
+            "y": 926,
+            "width": 136,
+            "height": 40,
+            "text": "Rejected by DGIE"
+        }
+    ]
+}

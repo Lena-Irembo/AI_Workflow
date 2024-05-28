@@ -1,0 +1,75 @@
+{
+  "image_path": "C:/Users/Tlxna/Downloads/apply-pay1.png",
+  "annotations": [
+    {
+      "x": 128,
+      "y": 45,
+      "width": 162,
+      "height": 149,
+      "text": "NEW"
+    },
+    {
+      "x": 339,
+      "y": 23,
+      "width": 158,
+      "height": 184,
+      "text": "\u2014APPLY\u2014"
+    },
+    {
+      "x": 683,
+      "y": 34,
+      "width": 88,
+      "height": 175,
+      "text": "\u2014\u2014NO-"
+    },
+    {
+      "x": 779,
+      "y": 11,
+      "width": 178,
+      "height": 342,
+      "text": "NOTIFICATION\n\nGENERATE_BILL_ID"
+    },
+    {
+      "x": 1042,
+      "y": 24,
+      "width": 144,
+      "height": 178,
+      "text": "\n\nPAYMENT_\nPENDING\n\n"
+    },
+    {
+      "x": 1317,
+      "y": 54,
+      "width": 86,
+      "height": 140,
+      "text": "\u2014PAY\u2014"
+    },
+    {
+      "x": 1461,
+      "y": 18,
+      "width": 97,
+      "height": 240,
+      "text": "\nNOTIFICATION"
+    },
+    {
+      "x": 1611,
+      "y": 31,
+      "width": 151,
+      "height": 168,
+      "text": "PAID"
+    },
+    {
+      "x": 1042,
+      "y": 272,
+      "width": 178,
+      "height": 71,
+      "text": "|\nREJECT\n|"
+    },
+    {
+      "x": 1035,
+      "y": 536,
+      "width": 187,
+      "height": 124,
+      "text": "\n\nPAYMENT_\nEXPIRED"
+    }
+  ]
+}

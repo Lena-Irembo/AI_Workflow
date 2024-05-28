@@ -1,0 +1,96 @@
+{
+    "image_path": "C:/Users/Tlxna/Downloads/Untitled.png",
+    "annotations": [
+        {
+            "x": 49,
+            "y": 117,
+            "width": 78,
+            "height": 35,
+            "text": ""
+        },
+        {
+            "x": 188,
+            "y": 111,
+            "width": 46,
+            "height": 42,
+            "text": ""
+        },
+        {
+            "x": 549,
+            "y": 358,
+            "width": 80,
+            "height": 60,
+            "text": ""
+        },
+        {
+            "x": 538,
+            "y": 102,
+            "width": 82,
+            "height": 56,
+            "text": ""
+        },
+        {
+            "x": 864,
+            "y": 124,
+            "width": 64,
+            "height": 22,
+            "text": ""
+        },
+        {
+            "x": 96,
+            "y": 78,
+            "width": 148,
+            "height": 265,
+            "text": "Start"
+        },
+        {
+            "x": 355,
+            "y": 57,
+            "width": 212,
+            "height": 196,
+            "text": "vey |"
+        },
+        {
+            "x": 902,
+            "y": 87,
+            "width": 226,
+            "height": 162,
+            "text": "Pay"
+        },
+        {
+            "x": 1096,
+            "y": 254,
+            "width": 174,
+            "height": 155,
+            "text": ""
+        },
+        {
+            "x": 1182,
+            "y": 542,
+            "width": 160,
+            "height": 175,
+            "text": "IN\n\nSubmitted"
+        },
+        {
+            "x": 825,
+            "y": 435,
+            "width": 365,
+            "height": 159,
+            "text": "<\u00a9Submit to 3rd party\nsystem"
+        },
+        {
+            "x": 839,
+            "y": 236,
+            "width": 162,
+            "height": 169,
+            "text": ""
+        },
+        {
+            "x": 508,
+            "y": 251,
+            "width": 235,
+            "height": 185,
+            "text": "Paym IN\npending"
+        }
+    ]
+}

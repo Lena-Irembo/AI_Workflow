@@ -1,0 +1,75 @@
+{
+    "image_path": "C:/Users/Tlxna/Documents/workflow-ai/pics/Screenshot 2024-05-21 164519.png",
+    "annotations": [
+        {
+            "x": 39,
+            "y": 93,
+            "width": 106,
+            "height": 92,
+            "text": ""
+        },
+        {
+            "x": 164,
+            "y": 92,
+            "width": 88,
+            "height": 69,
+            "text": ""
+        },
+        {
+            "x": 394,
+            "y": 24,
+            "width": 94,
+            "height": 246,
+            "text": "NOTIFICATION\n\nGENERATE_BILL_ID"
+        },
+        {
+            "x": 509,
+            "y": 57,
+            "width": 139,
+            "height": 140,
+            "text": "PAYMENT_\nPENDING\n\nmy Res"
+        },
+        {
+            "x": 687,
+            "y": 98,
+            "width": 56,
+            "height": 68,
+            "text": ""
+        },
+        {
+            "x": 751,
+            "y": 494,
+            "width": 2,
+            "height": 6,
+            "text": ""
+        },
+        {
+            "x": 770,
+            "y": 30,
+            "width": 56,
+            "height": 212,
+            "text": "NOTIFICATION 4"
+        },
+        {
+            "x": 843,
+            "y": 64,
+            "width": 110,
+            "height": 135,
+            "text": "PAID"
+        },
+        {
+            "x": 537,
+            "y": 215,
+            "width": 123,
+            "height": 44,
+            "text": ""
+        },
+        {
+            "x": 548,
+            "y": 366,
+            "width": 88,
+            "height": 54,
+            "text": ""
+        }
+    ]
+}

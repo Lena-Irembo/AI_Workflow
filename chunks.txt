@@ -1,0 +1,744 @@
+States
+These are different states the application can have  in the workflow:
+State
+Description
+DRAFT --- The draft state
+NEW ---- The new application state
+PAYMENT_PENDING ----- The payment pending state
+PAYMENT_EXPIRED ---- The payment expired state
+RESUBMITTED ---- The resubmitted state
+SUBMITTED ---- The submitted state
+CLOSED_WITH_APPROVAL ---- The closed with approval state
+CLOSED_WITH_REJECTED ---- The closed with rejected state
+PENDING_RESUBMISSION ----- The pending resubmission state
+PENDING_APPROVAL ---- The pending approval state
+PENDING_LAND_APPROVAL ----- The pending land approval state
+PENDING_APPOINTMENT ----- The pending appointment state
+PENDING_NIDA_APPROVAL ------ The pending NIDA approval state
+PENDING_SECTOR_APPROVAL ------ The pending sector approval state
+MASTER_APPLICATION_CLOSED ------ The master application closed state
+ACKNOWLEDGED ------ The acknowledged state
+PENDING_RIB_APPROVAL -------- The pending RIB approval state
+SUBMITTED_TO_NIDA ----- The submitted to NIDA state
+PENDING_EMBASSY_APPROVAL ------ The pending embassy approval state
+APPROVED_WAITING_VERIFICATION ------- The approved waiting verification state
+VERIFIED ------ The verified state
+REJECTED_BY_DGIE ----- The rejected by DGIE state
+REJECTED ------ The rejected state
+SENT_FOR_NRP_APPLICATION ------- The sent for NRP application state
+GENERATED_NPR_NUMBER ------- The generate NPR number state
+PAID ------ The paid state
+SENT_FOR_NID --------- The sent for NID state
+PRODUCED_NID --------- The produced NID state
+REJECTED_NID --------- The rejected NID state
+PENDING_CRVS_SUBMISSION -------- The pending CRVS submission state
+PENDING_RESUBMISSION_OTP -------- The pending resubmission OTP state
+PAYMENT_FREE -------- The payment free state
+LAIS_NOTIFIED ---------- The lais notified state
+CONTRACT_NOTARIZED ---------- The contract notarized state
+PENDING_NOTARIZATION -------- The pending notarization state
+CONTRACT_RFA ------ The contact RFA state
+PENDING_LEVEL_1_APPROVAL ------- The pending level 1 approval state
+PENDING_FINAL_APPROVAL ------- The pending final approval state
+DE_ESCALATED ------- The de-escalated state
+PENDING_LEVEL_2_APPROVAL ------- The pending level 2 approval state
+PENDING_RIB_FINAL_APPROVAL ------- The pending RIB final approval state
+PENDING_RESUBMISSION_OTP_LEVEL_2 ------- The pending resubmission OTP level 2 state
+PENDING_RESUBMISSION_OTP_LEVEL_3 ------- The pending resubmission OTP level 3 state
+PENDING_NISS_ESCALATION ------- The pending NISS escalation state
+ESCALATED ------- The escalated state
+RESUBMITTED_LEVEL_1 ------- The resubmitted level 1 state
+RESUBMITTED_LEVEL_2 ------- The resubmitted level 2 state
+PENDING_LEVEL_3_APPROVAL ------- The pending level 3 approval state
+PENDING_LEVEL_4_APPROVAL ------- The pending level 4 approval state
+DE_ESCALATED_LEVEL_1 ------- The de-escalated level 1 state
+DE_ESCALATED_LEVEL_2 ------- The de-escalated level 2 state
+DE_ESCALATED_LEVEL_3 ------- The de-escalated level 3 state
+
+------------------
+Events:
+    CREATE ---- Event to create an application.
+    PAY ---- Event to pay for an application.
+    APPROVE ---- Event to approve an application.
+    REJECT ---- Event to reject an application.
+    ASSIGN_OFFICE ---- Event to assign office on an application.
+    ESCALATE ---- Event to escalate level of an application.
+    DE_ESCALATE ---- Event to de-escalate level of an application.
+    FINAL_APPROVE ---- Event for final approval of the application.
+    PUSH ---- Event to push an application to external services.
+    RESUBMIT ---- Event to resubmit an application.
+    REQUEST_FOR_ACTION ---- Event for rfa on an application.
+    SCHEDULE_APPOINTMENT ---- Event to schedule appointment on an application.
+
+Events are processes or operations that happen to change the application state. The high level diagram above show how an application starts with state **`NEW`**, after the `**APPLY**` event is run, the application state changes to **`PAYMENT_PENDING`** and the processes continues.
+We have different state event, here is a list of them:
+
+Event to create an application
+    {
+    "startState": "NEW",
+    "event": "CREATE",
+    "endStateOne": {
+        "stateName": "Payment Pending",
+        "stateCode": "PAYMENT_PENDING",
+        "nextEvent": null,
+        "breakingAction": {...},
+        "nonBreakingActionList": [...]
+    },
+    "endStateTwo": null
+    }
+
+
+Event to pay for an application.
+    {
+    "startState": "PAYMENT_PENDING",
+    "event": "PAY",
+    "endStateOne": {
+        "stateName": "Paid",
+        "stateCode": "PAID",
+        "nextEvent": null,
+        "breakingAction": {...},
+        "nonBreakingActionList": [...]
+    },
+    "endStateTwo": null
+    }
+
+Event to approve an application.
+    {
+    "startState": "PAYMENT_PENDING",
+    "event": "PAY",
+    "endStateOne": {
+        "stateName": "Paid",
+        "stateCode": "PAID",
+        "nextEvent": null,
+        "breakingAction": {...},
+        "nonBreakingActionList": [...]
+    },
+    "endStateTwo": null
+    }
+
+Event to reject an application.
+    {
+    "startState": "PAYMENT_PENDING",
+    "event": "REJECT",
+    "endStateOne": {
+        "stateName": "Payment Expired",
+        "stateCode": "PAYMENT_EXPIRED",
+        "nextEvent": null,
+        "breakingAction": {
+        "actionType": null,
+        "args": null
+        },
+        "nonBreakingActionList": []
+    },
+    "endStateTwo": null
+    }
+
+Event to assign office on an application.
+{
+  "startState": "PAID",
+  "event": "ASSIGN_OFFICE",
+  "endStateOne": {
+    "stateName": "pending approval",
+    "stateCode": "PENDING_LEVEL_1_APPROVAL",
+    "nextEvent": null,
+    "breakingAction": {...},
+    "nonBreakingActionList": null
+  },
+  "endStateTwo": null
+}
+
+Event to escalate level of an application.
+{
+  "startState": "xxx",
+  "event": "ESCALATE",
+  "endStateOne": {
+    "stateName": "xxx",
+    "stateCode": "xxx",
+    "nextEvent": null,
+    "breakingAction": {...},
+    "nonBreakingActionList": [...]
+  },
+  "endStateTwo": null
+}
+
+
+Event to de-escalate level of an application.
+{
+  "startState": "xxx",
+  "event": "DESCALATE",
+  "endStateOne": {
+    "stateName": "xxx",
+    "stateCode": "xxx",
+    "nextEvent": null,
+    "breakingAction": {...},
+    "nonBreakingActionList": [...]
+  },
+  "endStateTwo": null
+}
+
+Event for final approval of the application.
+{
+  "startState": "xxx",
+  "event": "FINAL_APPROVE",
+  "endStateOne": {
+    "stateName": "xxx",
+    "stateCode": "xxx",
+    "nextEvent": null,
+    "breakingAction": {...},
+    "nonBreakingActionList": [...]
+  },
+  "endStateTwo": null
+}
+
+Event to push an application to external services.
+{
+  "startState": "xxx",
+  "event": "PUSH",
+  "endStateOne": {
+    "stateName": "xxx",
+    "stateCode": "xxx",
+    "nextEvent": null,
+    "breakingAction": {...},
+    "nonBreakingActionList": [...]
+  },
+  "endStateTwo": null
+}
+
+Event to resubmit an application.
+{
+  "startState": "xxx",
+  "event": "RESUBMIT",
+  "endStateOne": {
+    "stateName": "xxx",
+    "stateCode": "xxx",
+    "nextEvent": null,
+    "breakingAction": {...},
+    "nonBreakingActionList": [...]
+  },
+  "endStateTwo": null
+}
+
+Event for rfa on an application.
+{
+  "startState": "xxx",
+  "event": "REQUEST_FOR_ACTION",
+  "endStateOne": {
+    "stateName": "xxx",
+    "stateCode": "xxx",
+    "nextEvent": null,
+    "breakingAction": {...},
+    "nonBreakingActionList": [...]
+  },
+  "endStateTwo": null
+}
+
+Event to schedule appointment on an application.
+{
+  "startState": "xxx",
+  "event": "SCHEDULE_APPOINTMENT",
+  "endStateOne": {
+    "stateName": "xxx",
+    "stateCode": "xxx",
+    "nextEvent": null,
+    "breakingAction": {...},
+    "nonBreakingActionList": [...]
+  },
+  "endStateTwo": null
+}
+
+EXAMPLES:
+1. Apply-Pay workflow
+[
+  {
+    "startState": "NEW",
+    "event": "CREATE",
+    "endStateOne": {
+      "stateName": "Payment Pending",
+      "stateCode": "PAYMENT_PENDING",
+      "nextEvent": null,
+      "breakingAction": {
+        "actionType": "BILL_ID_GENERATION",
+        "args": null
+      },
+      "nonBreakingActionList": [
+        {
+          "actionType": "NOTIFICATION",
+          "args": null
+        }
+      ]
+    },
+    "endStateTwo": null
+  },
+  {
+    "startState": "PAYMENT_PENDING",
+    "event": "PAY",
+    "endStateOne": {
+      "stateName": "Paid",
+      "stateCode": "PAID",
+      "nextEvent": null,
+      "breakingAction": null,
+      "nonBreakingActionList": [
+        {
+          "actionType": "NOTIFICATION",
+          "args": null
+        }
+      ]
+    },
+    "endStateTwo": null
+  }
+],
+
+2. Apply-Pay-Validate(L3)-Certificate workflow
+[
+  {
+    "startState": "NEW",
+    "event": "CREATE",
+    "endStateOne": {
+      "stateName": "Payment Pending",
+      "stateCode": "PAYMENT_PENDING",
+      "nextEvent": null,
+      "breakingAction": {
+        "actionType": "BILL_ID_GENERATION",
+        "args": null
+      },
+      "nonBreakingActionList": [
+        {
+          "actionType": "NOTIFICATION",
+          "args": null
+        }
+      ]
+    },
+    "endStateTwo": null
+  },
+  {
+    "startState": "PAYMENT_PENDING",
+    "event": "PAY",
+    "endStateOne": {
+      "stateName": "Paid",
+      "stateCode": "PAID",
+      "nextEvent": "ASSIGN_OFFICE",
+      "breakingAction": null,
+      "nonBreakingActionList": [
+        {
+          "actionType": "NOTIFICATION",
+          "args": null
+        }
+      ]
+    },
+    "endStateTwo": null
+  },
+  {
+    "startState": "PAID",
+    "event": "ASSIGN_OFFICE",
+    "endStateOne": {
+      "stateName": "pending approval",
+      "stateCode": "PENDING_LEVEL_1_APPROVAL",
+      "nextEvent": null,
+      "breakingAction": {
+        "actionType": "ASSIGN_OFFICE",
+        "args": {
+          "officeID": "e28944c8-1cc1-406f-974e-902ed6e47a05",
+          "attributeKey": null,
+          "officeAssignmentLogicType": "ID_FIXED_OFFICE"
+        }
+      },
+      "nonBreakingActionList": null
+    },
+    "endStateTwo": null
+  },
+  {
+    "startState": "PAYMENT_PENDING",
+    "event": "REJECT",
+    "endStateOne": {
+      "stateName": "Payment Expired",
+      "stateCode": "PAYMENT_EXPIRED",
+      "nextEvent": null,
+      "breakingAction": {
+        "actionType": null,
+        "args": null
+      },
+      "nonBreakingActionList": []
+    },
+    "endStateTwo": null
+  },
+  {
+    "startState": "PENDING_LEVEL_1_APPROVAL",
+    "event": "REJECT",
+    "endStateOne": {
+      "stateName": "rejected",
+      "stateCode": "CLOSED_WITH_REJECTED",
+      "nextEvent": null,
+      "breakingAction": null,
+      "nonBreakingActionList": [
+        {
+          "actionType": "NOTIFICATION",
+          "args": null
+        }
+      ]
+    },
+    "endStateTwo": null
+  },
+  {
+    "startState": "PENDING_APPOINTMENT",
+    "event": "REJECT",
+    "endStateOne": {
+      "stateName": "rejected",
+      "stateCode": "CLOSED_WITH_REJECTED",
+      "nextEvent": null,
+      "breakingAction": null,
+      "nonBreakingActionList": [
+        {
+          "actionType": "NOTIFICATION",
+          "args": null
+        }
+      ]
+    },
+    "endStateTwo": null
+  },
+  {
+    "startState": "PENDING_LEVEL_1_APPROVAL",
+    "event": "REQUEST_FOR_ACTION",
+    "endStateOne": {
+      "stateName": "pending resubmission",
+      "stateCode": "PENDING_RESUBMISSION_OTP",
+      "nextEvent": null,
+      "breakingAction": null,
+      "nonBreakingActionList": [
+        {
+          "actionType": "NOTIFICATION",
+          "args": null
+        }
+      ]
+    },
+    "endStateTwo": null
+  },
+  {
+    "startState": "PENDING_APPOINTMENT",
+    "event": "REQUEST_FOR_ACTION",
+    "endStateOne": {
+      "stateName": "pending resubmission",
+      "stateCode": "PENDING_RESUBMISSION_OTP",
+      "nextEvent": null,
+      "breakingAction": null,
+      "nonBreakingActionList": [
+        {
+          "actionType": "NOTIFICATION",
+          "args": null
+        }
+      ]
+    },
+    "endStateTwo": null
+  },
+  {
+    "startState": "PENDING_LEVEL_1_APPROVAL",
+    "event": "SCHEDULE_APPOINTMENT",
+    "endStateOne": {
+      "stateName": "pending appointment",
+      "stateCode": "PENDING_APPOINTMENT",
+      "nextEvent": null,
+      "breakingAction": null,
+      "nonBreakingActionList": [
+        {
+          "actionType": "NOTIFICATION",
+          "args": null
+        }
+      ]
+    },
+    "endStateTwo": null
+  },
+  {
+    "startState": "PENDING_APPOINTMENT",
+    "event": "APPROVE",
+    "endStateOne": {
+      "stateName": "Pending NISS Escalation",
+      "stateCode": "PENDING_NISS_ESCALATION",
+      "nextEvent": null,
+      "breakingAction": {
+        "actionType": "ASSIGN_OFFICE",
+        "args": {
+          "officeID": "8237700b-e414-482f-ab33-6459c78fa818",
+          "attributeKey": null,
+          "officeAssignmentLogicType": "ID_FIXED_OFFICE"
+        }
+      },
+      "nonBreakingActionList": []
+    },
+    "endStateTwo": null
+  },
+  {
+    "startState": "PENDING_LEVEL_1_APPROVAL",
+    "event": "APPROVE",
+    "endStateOne": {
+      "stateName": "Pending NISS Escalation",
+      "stateCode": "PENDING_NISS_ESCALATION",
+      "nextEvent": null,
+      "breakingAction": {
+        "actionType": "ASSIGN_OFFICE",
+        "args": {
+          "officeID": "8237700b-e414-482f-ab33-6459c78fa818",
+          "attributeKey": null,
+          "officeAssignmentLogicType": "ID_FIXED_OFFICE"
+        }
+      },
+      "nonBreakingActionList": []
+    },
+    "endStateTwo": null
+  },
+  {
+    "startState": "PENDING_RESUBMISSION_OTP",
+    "event": "RESUBMIT",
+    "endStateOne": {
+      "stateName": "Application resubmitted",
+      "stateCode": "RESUBMITTED_LEVEL_1",
+      "nextEvent": null,
+      "breakingAction": null,
+      "nonBreakingActionList": [
+        {
+          "actionType": "NOTIFICATION",
+          "args": null
+        }
+      ]
+    },
+    "endStateTwo": null
+  },
+  {
+    "startState": "RESUBMITTED_LEVEL_1",
+    "event": "REQUEST_FOR_ACTION",
+    "endStateOne": {
+      "stateName": "pending resubmission",
+      "stateCode": "PENDING_RESUBMISSION_OTP",
+      "nextEvent": null,
+      "breakingAction": null,
+      "nonBreakingActionList": [
+        {
+          "actionType": "NOTIFICATION",
+          "args": null
+        }
+      ]
+    },
+    "endStateTwo": null
+  },
+  {
+    "startState": "RESUBMITTED_LEVEL_1",
+    "event": "APPROVE",
+    "endStateOne": {
+      "stateName": "Pending NISS Escalation",
+      "stateCode": "PENDING_NISS_ESCALATION",
+      "nextEvent": null,
+      "breakingAction": {
+        "actionType": "ASSIGN_OFFICE",
+        "args": {
+          "officeID": "8237700b-e414-482f-ab33-6459c78fa818",
+          "attributeKey": null,
+          "officeAssignmentLogicType": "ID_FIXED_OFFICE"
+        }
+      },
+      "nonBreakingActionList": null
+    },
+    "endStateTwo": null
+  },
+  {
+    "startState": "RESUBMITTED_LEVEL_1",
+    "event": "REJECT",
+    "endStateOne": {
+      "stateName": "rejected",
+      "stateCode": "CLOSED_WITH_REJECTED",
+      "nextEvent": null,
+      "breakingAction": null,
+      "nonBreakingActionList": [
+        {
+          "actionType": "NOTIFICATION",
+          "args": null
+        }
+      ]
+    },
+    "endStateTwo": null
+  },
+  {
+    "startState": "RESUBMITTED_LEVEL_1",
+    "event": "SCHEDULE_APPOINTMENT",
+    "endStateOne": {
+      "stateName": "pending appointment",
+      "stateCode": "PENDING_APPOINTMENT",
+      "nextEvent": null,
+      "breakingAction": null,
+      "nonBreakingActionList": [
+        {
+          "actionType": "NOTIFICATION",
+          "args": null
+        }
+      ]
+    },
+    "endStateTwo": null
+  },
+  {
+    "startState": "PENDING_NISS_ESCALATION",
+    "event": "ESCALATE",
+    "endStateOne": {
+      "stateName": "Pending Final Approval",
+      "stateCode": "PENDING_FINAL_APPROVAL",
+      "nextEvent": null,
+      "breakingAction": {
+        "actionType": "ASSIGN_OFFICE",
+        "args": {
+          "officeID": "e28944c8-1cc1-406f-974e-902ed6e47a05",
+          "attributeKey": null,
+          "officeAssignmentLogicType": "ID_FIXED_OFFICE"
+        }
+      },
+      "nonBreakingActionList": []
+    },
+    "endStateTwo": null
+  },
+  {
+    "startState": "PENDING_FINAL_APPROVAL",
+    "event": "FINAL_APPROVE",
+    "endStateOne": {
+      "stateName": "Approved",
+      "stateCode": "CLOSED_WITH_APPROVAL",
+      "nextEvent": null,
+      "breakingAction": {
+        "actionType": "CERTIFICATE_GENERATION",
+        "args": {
+          "parameters": {
+            "certificateImages": {
+              "COUNTRY_LOGO": "images/country-logo.png",
+              "MINICOM_MINISTER_SIGNATURE": "images/minicom_minister_signature.png",
+              "IREMBOGOV_IDENTIFIER_ICON": "images/irembogov_logo_icon.png"
+            },
+            "imagesFromTheForm": {},
+            "staticCertificateTexts": {},
+            "certificateValidityData": {
+              "key": "VALIDITY_DATE",
+              "validityDateData": {
+                "type": "YEAR",
+                "number": "10"
+              }
+            }
+          },
+          "certificateTemplateName": "Gaming_license_application_MINICOM.jrxml"
+        }
+      },
+      "nonBreakingActionList": [
+        {
+          "actionType": "NOTIFICATION",
+          "args": null
+        }
+      ]
+    },
+    "endStateTwo": null
+  },
+  {
+    "startState": "PENDING_FINAL_APPROVAL",
+    "event": "REJECT",
+    "endStateOne": {
+      "stateName": "rejected",
+      "stateCode": "CLOSED_WITH_REJECTED",
+      "nextEvent": null,
+      "breakingAction": null,
+      "nonBreakingActionList": [
+        {
+          "actionType": "NOTIFICATION",
+          "args": null
+        }
+      ]
+    },
+    "endStateTwo": null
+  }
+]
+
+3. Apply-Pay-Integrate-Validate workflow
+[
+  {
+    "startState": "NEW",
+    "event": "CREATE",
+    "endStateOne": {
+      "stateName": "Payment Pending",
+      "stateCode": "PAYMENT_PENDING",
+      "nextEvent": null,
+      "breakingAction": {
+        "actionType": "COMPOSE",
+        "args": {
+          "actionsSet": {
+            "BILL_ID_GENERATION": {
+              "args": null,
+              "actionType": "BILL_ID_GENERATION"
+            },
+            "NIDA_INFORMATION_FETCH": {
+              "args": {
+                "idKey": "APPLICANT_NATIONAL_IDENTIFICATION"
+              },
+              "actionType": "NIDA_INFORMATION_FETCH"
+            }
+          }
+        }
+      },
+      "nonBreakingActionList": [
+        {
+          "actionType": "NOTIFICATION",
+          "args": null
+        }
+      ]
+    },
+    "endStateTwo": null
+  },
+  {
+    "startState": "PAYMENT_PENDING",
+    "event": "PAY",
+    "endStateOne": {
+      "stateName": "Paid",
+      "stateCode": "PAID",
+      "nextEvent": "PUSH",
+      "breakingAction": null,
+      "nonBreakingActionList": [
+        {
+          "actionType": "NOTIFICATION",
+          "args": null
+        }
+      ]
+    },
+    "endStateTwo": null
+  },
+  {
+    "startState": "PAID",
+    "event": "PUSH",
+    "endStateOne": {
+      "stateName": "Pending approval",
+      "stateCode": "PENDING_APPROVAL",
+      "nextEvent": null,
+      "breakingAction": {
+        "actionType": "INTEGRATION",
+        "args": {
+          "target": "DGIE",
+          "serviceName": "RWANDAN_NATIONALITY_ACQUISITION_BY_ADOPTION"
+        }
+      },
+      "nonBreakingActionList": null
+    },
+    "endStateTwo": null
+  },
+  {
+    "startState": "PENDING_APPROVAL",
+    "event": "FINAL_APPROVE",
+    "endStateOne": {
+      "stateName": "Approved",
+      "stateCode": "CLOSED_WITH_APPROVAL",
+      "nextEvent": null,
+      "breakingAction": null,
+      "nonBreakingActionList": null
+    },
+    "endStateTwo": null
+  },
+  {
+    "startState": "PENDING_APPROVAL",
+    "event": "REJECT",
+    "endStateOne": {
+      "stateName": "Rejected",
+      "stateCode": "CLOSED_WITH_REJECTED",
+      "nextEvent": null,
+      "breakingAction": null,
+      "nonBreakingActionList": null
+    },
+    "endStateTwo": null
+  }
+]
