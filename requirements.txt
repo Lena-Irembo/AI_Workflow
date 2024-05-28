@@ -1,0 +1,7 @@
+streamlit
+openai
+streamlit
+pytesseract
+opencv-python-headless
+Pillow
+PyQt5
